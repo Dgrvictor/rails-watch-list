@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>This List</h1>
+
+  <div>
+    <p>Name of list : <%= @list.name %> - <%= @list.id %></p>
+  </div>
+  <div>
+    <% @list.bookmarks.each do |bookmark| %>
+    <li><%= bookmark.comment%> - <%= bookmark.id%></li>
+    <li>movie id : <%= bookmark.movie.id %> - list id : <%= bookmark.list.id %></li>
+    <p>------------------------------------------</p>
+    <% end %>
+  </div>
+  <%= link_to "Back to lists", lists_path %>
+</div>
