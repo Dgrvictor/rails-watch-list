@@ -4,8 +4,9 @@
   <div>
     <% @lists.each do |list| %>
     <%= link_to list_path(list) do %>
-    <li><%= list.name%> - <%= list.id%></li>
+    <li><%= list.name%> - <%= list.id%> <%= link_to "DELETE", list_path(list), data:{turbo_method: :DELETE, turbo_confirm: "Ara you sur ?"} %></li>
     <% end %>
     <% end %>
   </div>
+  <%= link_to "Add new list", new_list_path %>
 </div>

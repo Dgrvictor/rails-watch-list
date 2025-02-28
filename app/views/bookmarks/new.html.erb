@@ -1,1 +1,12 @@
-<h1>New bookmark</h1>
+<div class="container">
+  <h1>New bookmark</h1>
+
+  <div>
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.association :movie, prompt: "Select movie"%>
+      <%= f.input :comment%>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+  <%= link_to "Back to lists", lists_path %>
+</div>

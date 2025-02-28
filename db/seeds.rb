@@ -18,7 +18,7 @@ puts "Creating database..."
 puts "--------------------------------"
 puts "Creating movies..."
 puts "--------------------------------"
-50.times do
+10.times do
   movie = Movie.new(title: Faker::Movie.title, overview: Faker::Lorem.paragraph, poster_url: "https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg", rating: rand(0.0..10.0))
   movie.save
 end
@@ -26,7 +26,7 @@ puts "Finished! Created #{Movie.count} movies."
 puts "--------------------------------"
 
 puts "Creating list..."
-10.times do
+3.times do
   list = List.new(name: Faker::Artist.name)
   list.save
 end
@@ -34,7 +34,7 @@ puts "Finished! Created #{List.count} lists."
 puts "--------------------------------"
 
 puts "Creating bookmarks..."
-40.times do
+10.times do
   bookmark = Bookmark.new(comment: Faker::Lorem.paragraph, movie: Movie.all.sample, list: List.all.sample)
   bookmark.save
 end

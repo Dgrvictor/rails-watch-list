@@ -1,15 +1,34 @@
+<header role="banner" class="banner d-flex align-items-center justify-content-center">
+  <h1 class="d-flex justify-content-center my-2"><%= @list.name %></h1>
+</header>
+
 <div class="container">
-  <h1>This List</h1>
 
   <div>
-    <p>Name of list : <%= @list.name %> - <%= @list.id %></p>
   </div>
-  <div>
+  <h2>My bookmarks</h2>
+  <div class="d-flex justify-content-evenly">
     <% @list.bookmarks.each do |bookmark| %>
-    <li><%= bookmark.comment%> - <%= bookmark.id%></li>
-    <li>movie id : <%= bookmark.movie.id %> - list id : <%= bookmark.list.id %></li>
-    <p>------------------------------------------</p>
+    <div class="card mb-2 me-2" style="width: 18rem;">
+      <%= image_tag "#{bookmark.movie.poster_url}"%>
+      <div class="card-body">
+        <h5><%= bookmark.movie.title %></h5>
+        <p class="card-text"><%= bookmark.comment %></p>
+        <%= link_to bookmark_path(bookmark), class: "button-delete",data:{turbo_method: :DELETE, turbo_confirm: "Ara you sur ?"} do %>
+          <i class="fa-solid fa-trash"></i>
+        <%end%>
+      </div>
+    </div>
     <% end %>
   </div>
-  <%= link_to "Back to lists", lists_path %>
+  <div>
+    <div>
+      <%= link_to new_list_bookmark_path(@list), class: "button-new" do%>
+      <i class="fa-solid fa-plus"></i>
+      <%end %>
+    </div>
+    <div>
+      <%= link_to "Back to lists", lists_path, class: "btn btn-primary mb-1" %>
+    </div>
+  </div>
 </div>
